@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/"
+  to = "/register.html"
+  status = 302
+
+[functions]
+  directory = "netlify/functions"
+
+[build]
+  publish = "public"

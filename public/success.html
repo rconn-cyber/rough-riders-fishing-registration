@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Confirmed — Rough Riders Fishing Tournament</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Pro:ital,wght@0,400;1,400&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: linear-gradient(160deg, #05111f 0%, #0a2d52 50%, #0e4a6e 100%);
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.box {
+  background: white;
+  border-radius: 20px;
+  padding: 56px 48px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+}
+.icon { font-size: 72px; margin-bottom: 20px; animation: pop 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes pop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.title {
+  font-family: 'Cinzel', serif; font-size: 28px; font-weight: 900;
+  color: #0d1f3c; margin-bottom: 10px;
+}
+.sub { font-size: 18px; color: #445577; font-style: italic; margin-bottom: 32px; }
+.divider { border: none; border-top: 2px solid #f0f2f8; margin: 28px 0; }
+.info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f5f7fc; font-size: 16px; }
+.info-row:last-child { border-bottom: none; }
+.info-label { color: #445577; }
+.info-value { font-weight: 600; color: #0d1f3c; }
+.back-btn {
+  display: inline-block; margin-top: 32px;
+  padding: 15px 36px; border-radius: 10px;
+  background: linear-gradient(135deg, #0d1f3c, #1e3f70);
+  color: white; text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 15px;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.back-btn:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="icon">🎣</div>
+  <div class="title">You're In, Angler!</div>
+  <div class="sub">Payment confirmed — see you on the water!</div>
+  <hr class="divider">
+  <div class="info-row"><span class="info-label">Event</span><span class="info-value">31st Annual Rough Riders Fishing Tournament</span></div>
+  <div class="info-row"><span class="info-label">Date</span><span class="info-value">June 19–20, 2026</span></div>
+  <div class="info-row"><span class="info-label">Location</span><span class="info-value">Treasure Island, FL</span></div>
+  <div class="info-row"><span class="info-label">Questions?</span><span class="info-value">fishing@tamparoughriders.org</span></div>
+  <a href="/register.html" class="back-btn">← Return to Site</a>
+</div>
+<script>
+// Restore confirmation data if came from Stripe redirect
+var saved = sessionStorage.getItem('fishingConfirmation');
+if (saved) {
+  try {
+    var data = JSON.parse(saved);
+    var rows = document.querySelectorAll('.info-row');
+    // Insert name row after event row
+    var nameRow = document.createElement('div');
+    nameRow.className = 'info-row';
+    nameRow.innerHTML = '<span class="info-label">Name</span><span class="info-value">' + data.firstName + ' ' + data.lastName + '</span>';
+    rows[0].after(nameRow);
+    var divRow = document.createElement('div');
+    divRow.className = 'info-row';
+    divRow.innerHTML = '<span class="info-label">Division</span><span class="info-value">' + (data.division === 'inshore' ? 'Inshore' : 'Tarpon') + '</span>';
+    rows[0].after(divRow);
+    sessionStorage.removeItem('fishingConfirmation');
+  } catch(e) {}
+}
+</script>
+</body>
+</html>

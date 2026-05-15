@@ -1,0 +1,8 @@
+{
+  "name": "rough-riders-fishing-tournament",
+  "version": "1.0.0",
+  "description": "31st Annual Rough Riders Charity Fishing Tournament registration site",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
