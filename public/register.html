@@ -12,11 +12,14 @@
   --water: #0a4a6e; --water-light: #0e6a9e;
   --cream: #f5f0e8; --white: #ffffff;
   --text-dark: #1a1a2e; --text-mid: #445577;
-  --shadow: 0 4px 24px rgba(13,31,60,0.18);
+  --shadow: 0 2px 12px rgba(13,31,60,0.10);
   --shadow-gold: 0 4px 24px rgba(201,168,76,0.25);
+  --bg-page: #f7f8fa;
+  --bg-card: #ffffff;
+  --border: #dde2ec;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); color: var(--text-dark); min-height: 100vh; }
+body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg-page); color: var(--text-dark); min-height: 100vh; }
 
 /* ── HERO ── */
 .hero {
@@ -60,25 +63,16 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 
 /* ── SPONSOR STRIP ENHANCED ── */
 .sponsor-strip {
-  background: var(--cream);
-  border-bottom: 3px solid var(--gold);
-  padding: 0 32px;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  text-align: center;
 }
-.sponsor-strip::-webkit-scrollbar { display: none; }
 .sponsor-strip-label {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
   text-transform: uppercase; color: var(--text-mid);
-  white-space: nowrap; flex-shrink: 0;
-  padding-right: 20px;
-  border-right: 1px solid rgba(13,31,60,0.12);
-  margin-right: 20px;
+  display: block; margin-bottom: 10px;
 }
 .sponsor-logo-item {
   height: 56px;
@@ -110,19 +104,19 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 .sponsor-logo-item img { max-height: 32px; max-width: 110px; object-fit: contain; }
 
 /* ── TABS ── */
-.tabs-bar { background: var(--navy); display: flex; border-bottom: 2px solid rgba(201,168,76,0.2); position: sticky; top: 0; z-index: 100; }
-.tab-btn { flex: 1; padding: 16px 8px; background: none; border: none; color: rgba(255,255,255,0.4); font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border-bottom: 3px solid transparent; margin-bottom: -2px; }
-.tab-btn:hover { color: rgba(255,255,255,0.7); }
-.tab-btn.active { color: var(--gold-light); border-bottom-color: var(--gold); }
+.tabs-bar { background: #fff; display: flex; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 4px rgba(13,31,60,0.06); }
+.tab-btn { flex: 1; padding: 13px 6px; background: none; border: none; color: var(--text-mid); font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; }
+.tab-btn:hover { color: var(--navy); }
+.tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
 .tab-btn.locked { cursor: not-allowed; opacity: 0.3; }
 .tab-btn .tab-lock { font-size: 10px; margin-left: 4px; }
 
 /* ── LAYOUT ── */
-.main { max-width: 900px; margin: 0 auto; padding: 36px 20px 80px; }
+.main { max-width: 720px; margin: 0 auto; padding: 28px 20px 80px; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
-.card { background: white; border-radius: 12px; padding: 26px 28px; box-shadow: var(--shadow); margin-bottom: 22px; }
-.section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid rgba(13,31,60,0.1); }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; box-shadow: var(--shadow); margin-bottom: 16px; }
+.section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
 .section-head svg { width: 22px; height: 22px; color: var(--gold-dark); flex-shrink: 0; }
 .section-head h2 { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
 
@@ -131,14 +125,14 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 .form-row.single { grid-template-columns: 1fr; }
 .form-group { display: flex; flex-direction: column; gap: 5px; }
 .form-group label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); }
-.form-group input, .form-group select { border: 1.5px solid #d4dae8; border-radius: 8px; padding: 10px 13px; font-family: 'Crimson Pro', serif; font-size: 16px; color: var(--text-dark); background: #fafbfe; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+.form-group input, .form-group select { border: 1.5px solid var(--border); border-radius: 7px; padding: 9px 12px; font-family: 'Crimson Pro', serif; font-size: 15px; color: var(--text-dark); background: #fff; transition: border-color 0.18s, box-shadow 0.18s; outline: none; }
 .form-group input:focus, .form-group select:focus { border-color: var(--navy-light); box-shadow: 0 0 0 3px rgba(30,63,112,0.1); background: white; }
 
 /* ── DIVISION CARDS ── */
 .division-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 22px; }
-.division-card { border: 2px solid #d4dae8; border-radius: 10px; padding: 16px; cursor: pointer; transition: all 0.2s; background: #fafbfe; position: relative; }
-.division-card:hover { border-color: var(--navy-light); background: #f0f4ff; }
-.division-card.selected { border-color: var(--navy); background: rgba(13,31,60,0.05); }
+.division-card { border: 2px solid var(--border); border-radius: 9px; padding: 14px 12px; cursor: pointer; transition: all 0.2s; background: #fff; position: relative; }
+.division-card:hover { border-color: var(--navy-light); background: #f5f8ff; }
+.division-card.selected { border-color: var(--navy); background: #eef2ff; }
 .division-card.selected::after { content:''; position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:50%; background:var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='white' d='M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z'/%3E%3C/svg%3E"); }
 .div-icon { font-size: 26px; margin-bottom: 6px; }
 .div-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
@@ -161,9 +155,9 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 
 /* ── ADD-ONS ── */
 .addons-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:11px; margin-bottom:22px; }
-.addon-card { border:2px solid #d4dae8; border-radius:10px; padding:14px; cursor:pointer; transition:all 0.2s; background:#fafbfe; position:relative; user-select:none; }
-.addon-card:hover { border-color:var(--water-light); background:#f0f7ff; }
-.addon-card.selected { border-color:var(--water); background:rgba(10,74,110,0.06); }
+.addon-card { border:2px solid var(--border); border-radius:9px; padding:14px 12px; cursor:pointer; transition:all 0.18s; background:#fff; position:relative; user-select:none; }
+.addon-card:hover { border-color:var(--navy-light); background:#f5f8ff; }
+.addon-card.selected { border-color:var(--navy); background:#eef2ff; }
 .addon-card.selected::after { content:''; position:absolute; top:8px; right:8px; width:17px; height:17px; border-radius:50%; background:var(--water) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='white' d='M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z'/%3E%3C/svg%3E") center/contain; }
 .addon-name { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:600; color:var(--navy); letter-spacing:0.04em; margin-bottom:2px; }
 .addon-desc { font-size:12px; color:var(--text-mid); margin-bottom:7px; }
@@ -212,12 +206,12 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 .sponsor-tiers-small { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; }
 
 .tier-card {
-  border: 2px solid #d4dae8; border-radius: 12px; padding: 18px 16px;
-  cursor: pointer; transition: all 0.2s; background: #fafbfe;
+  border: 1.5px solid var(--border); border-radius: 9px; padding: 14px 13px;
+  cursor: pointer; transition: all 0.18s; background: #fff;
   position: relative; overflow: hidden;
 }
-.tier-card:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
-.tier-card.selected { border-color:var(--gold); background:rgba(201,168,76,0.05); box-shadow:var(--shadow-gold); }
+.tier-card:hover { border-color:var(--navy-light); box-shadow:var(--shadow); transform:translateY(-1px); }
+.tier-card.selected { border-color:var(--gold); background:#fffbf0; }
 .tier-card .tier-color-bar { height:4px; border-radius:4px 4px 0 0; position:absolute; top:0; left:0; right:0; }
 .tier-gold-bar { background:linear-gradient(90deg,#b8940e,#e8c870); }
 .tier-silver-bar { background:linear-gradient(90deg,#888,#ccc); }
@@ -229,9 +223,9 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 .tier-card-benefits li::before { content:'✦ '; color:var(--gold-dark); font-size:9px; }
 
 /* Small tiers */
-.tier-small { border:2px solid #d4dae8; border-radius:10px; padding:14px 14px; cursor:pointer; transition:all 0.2s; background:#fafbfe; }
-.tier-small:hover { border-color:var(--navy-light); background:#f0f4ff; }
-.tier-small.selected { border-color:var(--gold); background:rgba(201,168,76,0.05); }
+.tier-small { border:1.5px solid var(--border); border-radius:8px; padding:12px 13px; cursor:pointer; transition:all 0.18s; background:#fff; }
+.tier-small:hover { border-color:var(--navy-light); background:#f5f8ff; }
+.tier-small.selected { border-color:var(--gold); background:#fffbf0; }
 .tier-small-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-mid); margin-bottom:3px; }
 .tier-small-price { font-family:'Cinzel',serif; font-size:20px; font-weight:700; color:var(--navy); margin-bottom:8px; }
 .tier-small-benefits { font-size:12px; color:var(--text-mid); line-height:1.55; list-style:none; }
@@ -285,11 +279,11 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 /* ── SPONSOR GRID SECTION ── */
 .sponsor-grid-section { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
 .sponsor-grid-card {
-  border: 1.5px solid #e4e8f0; border-radius: 10px;
-  padding: 18px 16px; background: white;
+  border: 1px solid var(--border); border-radius: 9px;
+  padding: 16px 14px; background: white;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; min-height: 80px;
-  transition: all 0.2s; cursor: default;
+  text-align: center; min-height: 76px;
+  transition: all 0.18s; cursor: default;
 }
 .sponsor-grid-card:hover { border-color: var(--navy-light); box-shadow: var(--shadow); transform: translateY(-2px); }
 .sponsor-grid-name {
@@ -325,19 +319,18 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 
 /* ── PRIZES ── */
 .prizes-banner {
-  background: linear-gradient(135deg, #1a1000 0%, #3a2000 40%, #1a1000 100%);
-  border-top: 3px solid var(--gold);
-  border-bottom: 3px solid var(--gold);
-  padding: 32px 40px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 22px 24px;
   text-align: center;
 }
 .prizes-eyebrow {
-  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
-  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 4px;
 }
 .prizes-title {
-  font-family: 'Cinzel', serif; font-size: clamp(18px, 3vw, 26px); font-weight: 900;
-  color: white; margin-bottom: 24px; line-height: 1.2;
+  font-family: 'Cinzel', serif; font-size: clamp(15px, 2.4vw, 20px); font-weight: 700;
+  color: var(--navy); margin-bottom: 16px; line-height: 1.2;
 }
 .prizes-grid {
   display: flex; justify-content: center; align-items: flex-end;
@@ -349,43 +342,43 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
   position: relative;
 }
 .prize-first {
-  background: linear-gradient(160deg, #2a1800, #5a3800);
+  background: linear-gradient(160deg, var(--navy), var(--navy-mid));
   border: 2px solid var(--gold);
-  box-shadow: 0 0 30px rgba(201,168,76,0.4);
-  transform: scale(1.06);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.22);
+  transform: scale(1.05);
 }
 .prize-second {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: #f0f4ff;
+  border: 1px solid var(--border);
 }
 .prize-third {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: #f7f8fa;
+  border: 1px solid var(--border);
 }
 .prize-place {
   font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
   letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px;
 }
 .prize-first .prize-place { color: var(--gold); }
-.prize-second .prize-place { color: #c0c8d8; }
-.prize-third .prize-place { color: #a0a8b8; }
+.prize-second .prize-place { color: var(--text-mid); }
+.prize-third .prize-place { color: var(--text-mid); }
 .prize-medal { font-size: 28px; margin-bottom: 6px; }
 .prize-amount {
   font-family: 'Cinzel', serif; font-weight: 900; line-height: 1;
 }
 .prize-first .prize-amount { font-size: 36px; color: var(--gold-light); }
-.prize-second .prize-amount { font-size: 28px; color: white; }
-.prize-third .prize-amount { font-size: 24px; color: rgba(255,255,255,0.85); }
-.prize-note { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 6px; }
+.prize-second .prize-amount { font-size: 26px; color: var(--navy); }
+.prize-third .prize-amount { font-size: 22px; color: var(--navy); }
+.prize-note { font-size: 11px; color: var(--text-mid); margin-top: 4px; }
 .prize-divisions {
   display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
   margin-top: 16px;
 }
 .prize-div-badge {
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 20px; padding: 5px 14px;
-  font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 600;
-  letter-spacing: 0.06em; color: rgba(255,255,255,0.8);
+  background: var(--bg-page); border: 1px solid var(--border);
+  border-radius: 20px; padding: 4px 12px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.05em; color: var(--text-mid);
 }
 </style>
 </head>
@@ -452,7 +445,7 @@ body { font-family: 'Crimson Pro', Georgia, serif; background: var(--navy); colo
 </div>
 
 <!-- SPONSOR STRIP -->
-<div class="sponsor-strip" id="sponsorStrip">
+<div class="sponsor-strip" id="sponsorStrip" style="text-align:center">
   <span class="sponsor-strip-label">Our Sponsors</span>
 
   <div class="sponsor-name-item" style="color:#1a6b1a;border-left:3px solid #1a6b1a;padding-left:14px">
